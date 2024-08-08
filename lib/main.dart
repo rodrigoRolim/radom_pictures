@@ -26,10 +26,12 @@ class RandomSutra extends StatefulWidget {
 
 class RandomSutraState extends State<RandomSutra> {
   String _currentImage = '1-Bicicleta.jpeg';
+  String _namePosition = 'Bicileta';
 
   void updatePosition(Map<String, String> newPosition) {
     setState(() {
       _currentImage = newPosition['image']!;
+      _namePosition = newPosition['name']!;
     });
   }
 
@@ -63,11 +65,15 @@ class RandomSutraState extends State<RandomSutra> {
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
                 ImageSexPosition(sexPositionImage: _currentImage),
+                Text(_namePosition, style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 24.0
+                )),
                 Container(
                   width: 280,
                   margin: const EdgeInsets.fromLTRB(0, 32.0, 0, 0),
                   child: RandomPositionsGeneratorButton(onEmitPosition: updatePosition)
-                )
+                ),
               ]
             ),
           ),
